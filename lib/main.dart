@@ -5,6 +5,7 @@ import 'package:hive/hive.dart';
 import 'package:hive_tutorial/showListPage/screen/showListPage.dart';
 import 'package:path_provider/path_provider.dart';
 
+import 'auth/screen/authentication-screen.dart';
 import 'home/screen/homeScreen.dart';
 
 
@@ -12,6 +13,8 @@ void main() async{
   WidgetsFlutterBinding.ensureInitialized();
 final documentSir=await getApplicationDocumentsDirectory();
  Hive.init(documentSir.path);
+  await Hive.openBox('users');
+
   // await Hive.openBox('shopping_boc');
   runApp(const MyApp());
 }
@@ -43,7 +46,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.purple),
         useMaterial3: true,
       ),
-      home: const ShowListPage(),
+      home:  Login_Page(),
     );
   }
 }
